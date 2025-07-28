@@ -1,0 +1,39 @@
+ゲームの流れを管理
+
+プレイヤーを管理
+持ち場を管理する
+
+牌を管理
+文型管理
+
+プレイヤーマネージャー
+・親が誰かの情報 urlのパラメーター取得
+・プレイヤーを配列で管理
+・名前を表示
+　・親の名前を赤で表示
+・自分が入室したことをwebsocketで送信
+
+{
+   type:'entryRoom',
+   payload:{username:"なんか"}
+}
+
+
+これから必要な機能
+uiManager
+showThrowHai が呼ばれたら 3, 2, 1 と1秒ごとにテキストを変えて表示する
+showThrowHai が呼ばれたら親以外ポンButtonを表示する
+
+throw で親だけ ３秒後に メッセージタイプ next を parentName　と nowPhaseNumber : this.nowPhaseNumber 付きで送る
+
+next を 受け取ったら nextPhaseNumberを+1して parentName を付けて nextPhaseを全員に送る
+nextPhaseを受け取ったら自分自身なら1個引くしnowPhaseNumberを更新するしスコアボードの色も変える
+
+ポンを押したら メッセージタイプ pon を parentName と playerNumber:playermanagerのgetPlayerNumber付きで送る
+
+ponを受け取ったら pon playerNumberを送る
+
+pon を受け取ったらカウントダウンをなくす。ポンのボタンも消す。
+ポンされた牌を非表示にする。ポンした人のスコアボードを点滅させる。
+
+自分自身がポンした人ならポンした牌を場に追加するその灰はちゃんと属性draggableを付ける
